@@ -1,7 +1,9 @@
 # AdaptorFinder
 tools that find adaptor unremoved subreads
 
-this programs need `pbcore` in the virtual environment.
+## Usage
+
+this programs need `pbcore` in the virtual environment, and `lalign` for `validate_unremoved_adaptor.py`.
 
 ```
 usage: find_candidates.py [-h] [--n_core N_CORE] [--len_th LEN_TH] fasta_file
@@ -34,4 +36,12 @@ optional arguments:
   --lalign LALIGN  the directory of lalign
   --n_core N_CORE  number of processes
   --len_th LEN_TH  length threshold of k-mer matching region
+```
+
+## Example
+
+```
+$ source VIRTUAL_ENV_DIR/bin/activate
+$ python find_candidates.py --n_core 12 --len_th 35 subreads.fasta > candidates
+$ python validate_unremoved_adaptor.py --n_core 12 --lalign LALIGN_DIR candidates subreads.fasta > overlap
 ```
