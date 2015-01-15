@@ -12,6 +12,7 @@ import math
 def resolve_length_info(seq):
 
     well, data_list = seq
+    data_list.sort()
     first_start = data_list[0][0]
 
     if first_start < 100:
@@ -65,7 +66,7 @@ def resolve_length_info(seq):
         if separate_num > 1:
             separate_dict[index] = separate_num
     if len(separate_dict) == 0:
-        print "***size of separate_dict is 0!***"
+        #print "***size of separate_dict is 0!***"
         return None
 
     return well, data_list, separate_dict
@@ -74,7 +75,7 @@ def resolve_length_info(seq):
 if __name__ == "__main__":
 
     import argparse
-    parser = argparse.ArgumentParser(description="a multi-processes adaptor unremoved subreads finder using subread length infomation")
+    parser = argparse.ArgumentParser(description="determine the number of splitting adaptor unremoved subreads")
     parser.add_argument('fasta_file', help="a file that contains the subread information")
     parser.add_argument('--n_core', type=int, default=12, help="number of processes")
     #parser.add_argument('--len_th', type=int, default=1, help="length threshold of k-mer matching region")

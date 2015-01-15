@@ -38,10 +38,41 @@ optional arguments:
   --len_th LEN_TH  length threshold of k-mer matching region
 ```
 
+```
+usage: resolve_length_info.py [-h] [--n_core N_CORE] fasta_file
+
+determine the number of splitting adaptor unremoved subreads
+
+positional arguments:
+  fasta_file       a file that contains the subread information
+
+optional arguments:
+  -h, --help       show this help message and exit
+  --n_core N_CORE  number of processes
+```
+
+```
+usage: resolve_length_info_with_validate.py [-h] [--n_core N_CORE]
+                                            fasta_file validate_file
+
+determine the number of splitting adaptor unremoved subreads with even/odd
+information
+
+positional arguments:
+  fasta_file       a file that contains the subread information
+  validate_file    output file of validate_unremoved_adaptor.py
+
+optional arguments:
+  -h, --help       show this help message and exit
+  --n_core N_CORE  number of processes
+```
+
 ## Example
 
 ```
 $ source VIRTUAL_ENV_DIR/bin/activate
 $ python find_candidates.py --n_core 12 --len_th 35 subreads.fasta > candidates
 $ python validate_unremoved_adaptor.py --n_core 12 --lalign LALIGN_DIR candidates subreads.fasta > overlap
+$ ./extractValidatedSubreads.pl overlap > overlap.extracted
+$ python resolve_length_info_with_validate.py --n_core 12 subreads.fasta overlap.extracted > result
 ```

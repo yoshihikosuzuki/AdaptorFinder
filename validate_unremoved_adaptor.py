@@ -72,8 +72,9 @@ if __name__ == "__main__":
     with open(candidate_file, 'r') as f:
         for line in f:
             header, match_length = line.split(' ')
-            match_length = match_length.strip()
-            candidates.append( (header, match_length, seqs[header], lalign) )
+            match_length = int(match_length.strip())
+            if match_length >= length_threshold:
+                candidates.append( (header, match_length, seqs[header], lalign) )
 
     for res in exe_pool.imap(validate_candidate, candidates):
         if res[4] != 0:   # more strict

@@ -89,9 +89,9 @@ def resolve_length_info(seq):
 if __name__ == "__main__":
 
     import argparse
-    parser = argparse.ArgumentParser(description="a multi-processes adaptor unremoved subreads finder using subread length infomation")
+    parser = argparse.ArgumentParser(description="determine the number of splitting adaptor unremoved subreads with even/odd information")
     parser.add_argument('fasta_file', help="a file that contains the subread information")
-    parser.add_argument('validate_file', help="a file that contains the information of validated subreads")
+    parser.add_argument('validate_file', help="output file of validate_unremoved_adaptor.py")
     parser.add_argument('--n_core', type=int, default=12, help="number of processes")
     #parser.add_argument('--len_th', type=int, default=1, help="length threshold of k-mer matching region")
     args = parser.parse_args()
