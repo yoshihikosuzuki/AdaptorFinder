@@ -1,5 +1,4 @@
 # AdaptorFinder
-tools that find adaptor unremoved subreads
 
 ## Usage
 
